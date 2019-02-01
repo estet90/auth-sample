@@ -1,0 +1,67 @@
+plugins {
+    id "java"
+    id "org.springframework.boot" version "2.1.2.RELEASE"
+    id "io.spring.dependency-management" version "1.0.6.RELEASE"
+}
+
+version "1.0.0"
+
+ext {
+    jaxbApiVersion = "2.3.1"
+    jaxbCoreVersion = "2.3.0.1"
+    jaxbImplVersion = "2.3.1"
+    activationVersion = "1.1.1"
+    logbookVersion = "1.12.1"
+    mapstructVersion = "1.2.0.Final"
+}
+
+dependencies {
+    implementation(
+            "org.springframework.boot:spring-boot-starter-thymeleaf",
+            "org.springframework.boot:spring-boot-starter-web",
+            "org.springframework.boot:spring-boot-starter-data-jpa",
+            "com.h2database:h2",
+            "org.zalando:logbook-spring-boot-starter:$logbookVersion",
+            "org.mapstruct:mapstruct:$mapstructVersion",
+            "org.projectlombok:lombok",
+            "com.fasterxml.jackson.core:jackson-core",
+            "com.fasterxml.jackson.core:jackson-databind"
+    )
+    annotationProcessor(
+            "org.projectlombok:lombok",
+            "org.mapstruct:mapstruct-processor:$mapstructVersion"
+    )
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+}
+
+compileJava {
+    def relativePath = "out/production/classes/generated"
+    sourceSets.main.java {
+        srcDir(relativePath)
+    }
+    def generatedSourceDir = project.file(relativePath)
+    println "Creating and configuring generated source directory $generatedSourceDir"
+    project.mkdir(generatedSourceDir)
+    options.annotationProcessorGeneratedSourcesDirectory = generatedSourceDir
+    outputs.dir(generatedSourceDir)
+    doFirst {
+        project.delete(generatedSourceDir)
+        project.mkdir(generatedSourceDir)
+    }
+}
+
+clean {
+    def relativePath = "out/production/"
+    def generatedSourceDir = project.file(relativePath)
+    doFirst {
+        project.delete(generatedSourceDir)
+    }
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven {
+        url "https://repo.spring.io/milestone"
+    }
+}
