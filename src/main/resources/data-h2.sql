@@ -1,2 +1,2 @@
 INSERT INTO user (login, password, email)
-VALUES ('dima', 'd1765ef613040c12a2f8e948193d81fe', 'dima@pochta.ru');
+VALUES ('dima', 'c991457f96b6d59d0b5ae40b46a37a50', 'dima@pochta.ru');

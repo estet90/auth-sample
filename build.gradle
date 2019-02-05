@@ -20,6 +20,8 @@ dependencies {
             "org.springframework.boot:spring-boot-starter-thymeleaf",
             "org.springframework.boot:spring-boot-starter-web",
             "org.springframework.boot:spring-boot-starter-data-jpa",
+            "org.springframework.boot:spring-boot-starter-security",
+            "org.thymeleaf.extras:thymeleaf-extras-springsecurity5",
             "com.h2database:h2",
             "org.zalando:logbook-spring-boot-starter:$logbookVersion",
             "org.mapstruct:mapstruct:$mapstructVersion",
@@ -31,7 +33,6 @@ dependencies {
             "org.projectlombok:lombok",
             "org.mapstruct:mapstruct-processor:$mapstructVersion"
     )
-    implementation 'org.springframework.boot:spring-boot-starter-web'
 }
 
 compileJava {

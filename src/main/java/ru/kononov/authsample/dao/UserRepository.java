@@ -7,6 +7,6 @@ import ru.kononov.authsample.model.dao.User;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
 
-    User findByLoginAndPassword(String login, String password);
+    User findByLogin(String login);
 
 }
