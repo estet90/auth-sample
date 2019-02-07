@@ -6,4 +6,12 @@ spring:
     properties.hibernate.format_sql: true
   datasource.platform: h2
 
-default-role: user
+application:
+  default-role: user
+  header.authorization.bearer: Bearer
+  jwt:
+    secret-key: secret-key
+    expiration: 60000
+logging.level:
+  org.zalando.logbook: trace
+  ru.kononov.authsample: debug

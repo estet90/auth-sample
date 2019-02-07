@@ -7,10 +7,6 @@ plugins {
 version "1.0.0"
 
 ext {
-    jaxbApiVersion = "2.3.1"
-    jaxbCoreVersion = "2.3.0.1"
-    jaxbImplVersion = "2.3.1"
-    activationVersion = "1.1.1"
     logbookVersion = "1.12.1"
     mapstructVersion = "1.2.0.Final"
 }
@@ -22,6 +18,8 @@ dependencies {
             "org.springframework.boot:spring-boot-starter-data-jpa",
             "org.springframework.boot:spring-boot-starter-security",
             "org.thymeleaf.extras:thymeleaf-extras-springsecurity5",
+            "org.springframework.security:spring-security-jwt",
+            "io.jsonwebtoken:jjwt:0.9.1", //TODO: вынести версию
             "com.h2database:h2",
             "org.zalando:logbook-spring-boot-starter:$logbookVersion",
             "org.mapstruct:mapstruct:$mapstructVersion",

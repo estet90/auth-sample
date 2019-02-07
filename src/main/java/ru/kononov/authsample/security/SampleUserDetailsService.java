@@ -20,7 +20,7 @@ public class SampleUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    @Value("${default-role}")
+    @Value("${application.default-role}")
     private String defaultRole;
 
     @Override
@@ -32,8 +32,8 @@ public class SampleUserDetailsService implements UserDetailsService {
                     log.error("Error: ", exception);
                     return exception;
                 });
-        var authorities = List.of(new SimpleGrantedAuthority(defaultRole));
         log.debug("Log in complete");
+        var authorities = List.of(new SimpleGrantedAuthority(defaultRole));
         return new User(user.getLogin(), user.getPassword(), authorities);
     }
 
