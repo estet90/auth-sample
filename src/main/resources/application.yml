@@ -19,10 +19,12 @@ spring:
 
 application:
   default-role: user
-  header.authorization.bearer: Bearer
+  header.authorization.prefix.bearer: Bearer
   jwt:
     secret-key: secret-key
     expiration: 60000
 logging.level:
-  org.zalando.logbook: trace
-  ru.kononov.authsample: debug
+  ru.kononov:
+    authsample: debug
+    authsample.ApiLogger: trace
+  org.hibernate.SQL: debug
