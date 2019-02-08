@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import ru.kononov.authsample.security.SampleAuthenticationEntryPoint;
 
 @Configuration
 @RequiredArgsConstructor
@@ -23,14 +22,14 @@ public class SampleWebSecurityConfigurerAdapter extends WebSecurityConfigurerAda
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .exceptionHandling()
-                .authenticationEntryPoint(new SampleAuthenticationEntryPoint("/login"))
-                .and()
-                .authorizeRequests()
-                .antMatchers("/login").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin();
+                .formLogin()
+                .loginPage("/login")
+                .successForwardUrl("/")
+                .successHandler((request, response, authentication) -> {
+                    System.out.println("siski!!!");
+                    response.sendRedirect(request.getParameter("redirect"));
+                })
+        ;
     }
 
     @Override

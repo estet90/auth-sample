@@ -9,6 +9,7 @@ version "1.0.0"
 ext {
     logbookVersion = "1.12.1"
     mapstructVersion = "1.2.0.Final"
+    jjwtVersion = "0.9.1"
 }
 
 dependencies {
@@ -17,15 +18,17 @@ dependencies {
             "org.springframework.boot:spring-boot-starter-web",
             "org.springframework.boot:spring-boot-starter-data-jpa",
             "org.springframework.boot:spring-boot-starter-security",
+            "nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect",
             "org.thymeleaf.extras:thymeleaf-extras-springsecurity5",
-            "org.springframework.security:spring-security-jwt",
-            "io.jsonwebtoken:jjwt:0.9.1", //TODO: вынести версию
+            "io.jsonwebtoken:jjwt:$jjwtVersion",
             "com.h2database:h2",
             "org.zalando:logbook-spring-boot-starter:$logbookVersion",
             "org.mapstruct:mapstruct:$mapstructVersion",
             "org.projectlombok:lombok",
             "com.fasterxml.jackson.core:jackson-core",
-            "com.fasterxml.jackson.core:jackson-databind"
+            "com.fasterxml.jackson.core:jackson-databind",
+            "org.webjars:bootstrap:4.2.1",
+            "org.webjars:jquery:3.3.1-1"
     )
     annotationProcessor(
             "org.projectlombok:lombok",
